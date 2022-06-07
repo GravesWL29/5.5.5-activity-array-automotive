@@ -11,27 +11,44 @@ class Car extends VehicleModule {
         this.fuel = 10;
         this.scheduleService = false;
 }
-//checkService() {
-//    if (this.mileage > 30000) {            
-//        this.scheduleService = true
-//        return this.scheduleService;                       
-//    }
-//}
-//start() {
-//    if (this.fuel > 0) {            
-//        console.log("The engine has started.");
-//        return this.started = true
-//    } else {
-//        console.log("You have no fuel");
-//        return this.started = false;
-//    }
-//}
+checkService() {
+    if (this.mileage > 30000) {            
+        this.scheduleService = true
+        return this.scheduleService;                       
+    }
+}
+start() {
+    if (this.fuel > 0) {            
+        console.log("The engine has started.");
+        return this.started = true
+    } else {
+        console.log("You have no fuel");
+        return this.started = false;
+    }
+}
+loadPassenger(num) {
+    if (this.passenger < this.maxPassengers) {
+        if ((num + this.passenger) <= this.maxPassengers) {
+            this.passenger = num;
+            return this.passenger;               
+        } else {
+            console.log(this.model + " " + this.make + " not have enough space to take all passengers.");
 
+        }
+    } else {
+        console.log(this.model + " " + this.make + " is full");
+    }
+}
 
 
 }
 
 
-//this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
+let myCar = new Car('mercury', 'rad_sedan', '2002', 'white', 50000)
+
+myCar.start()
+myCar.loadPassenger(5)
+myCar.stop()
+myCar.checkService()
+
+console.log(myCar)
